@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebtiqAI — An AI support team for your website</title>
+  <meta name="description" content="WebtiqAI is an embeddable AI chatbot that answers your website visitors from your own content, 24/7." />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">W</span>
+        <span class="logo-text">webtiq<span class="accent">ai</span></span>
+      </a>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#bots">Meet the bots</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="demo.html" class="btn btn-primary btn-sm">Try the demo</a>
+      </nav>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">&#9776;</button>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-text">
+        <span class="badge">&#129302; AI chatbot for business websites</span>
+        <h1>An AI support team <span class="accent">for your website</span></h1>
+        <p class="lead">
+          WebtiqAI learns from your own content — FAQs, services, prices, policies —
+          and answers your visitors in seconds, 24 hours a day. No coding needed.
+          Just paste one line of code on your site.
+        </p>
+        <div class="hero-btns">
+          <a href="demo.html" class="btn btn-primary">Try the live demo &rarr;</a>
+          <a href="#how" class="btn btn-ghost">See how it works</a>
+        </div>
+        <p class="hero-note">Free to start &nbsp;&bull;&nbsp; Setup in 3 minutes &nbsp;&bull;&nbsp; Works on any website</p>
+        <p><span id="apiStatus" class="api-status">Checking backend...</span></p>
+      </div>
+
+      <!-- Auto-playing chat demo (JavaScript) -->
+      <div class="hero-card">
+        <div class="chat-head">
+          <span class="dot-online"></span>
+          <strong>WebtiqAI Assistant</strong>
+          <span class="chat-status">Online</span>
+        </div>
+        <div class="chat-body" id="heroChat"></div>
+        <div class="chat-foot">
+          <input type="text" placeholder="Ask something..." disabled />
+          <button disabled>&#10148;</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ STATS ============ -->
+  <section class="stats">
+    <div class="container stats-grid" id="statsGrid">
+      <div class="stat"><h3><span class="count" data-target="24">0</span>/7</h3><p>Always answering</p></div>
+      <div class="stat"><h3><span class="count" data-target="5">0</span>s</h3><p>Average reply time</p></div>
+      <div class="stat"><h3><span class="count" data-target="40">0</span>+</h3><p>Languages supported</p></div>
+      <div class="stat"><h3><span class="count" data-target="3">0</span> min</h3><p>To set up</p></div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURES ============ -->
+  <section class="section" id="features">
+    <div class="container">
+      <div class="section-head">
+        <span class="pill">Features</span>
+        <h2>Everything a small team needs</h2>
+        <p>One dashboard for your chats, your visitors and your leads.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="icon icon-sky">&#128172;</div>
+          <h3>Inbox</h3>
+          <p>Every conversation in one place, with the page and location of each visitor.</p>
+        </article>
+        <article class="card">
+          <div class="icon icon-peach">&#128202;</div>
+          <h3>Live traffic</h3>
+          <p>See who is on your website right now, and where they came from.</p>
+        </article>
+        <article class="card">
+          <div class="icon icon-mint">&#128737;</div>
+          <h3>Real visitors only</h3>
+          <p>Bots and email scanners are filtered out, so your numbers stay honest.</p>
+        </article>
+        <article class="card">
+          <div class="icon icon-lilac">&#128100;</div>
+          <h3>Lead capture</h3>
+          <p>When the bot cannot help, it offers your team and collects the visitor's details.</p>
+        </article>
+        <article class="card">
+          <div class="icon icon-sun">&#128276;</div>
+          <h3>Instant alerts</h3>
+          <p>Get a notification on your phone or laptop the moment a new chat starts.</p>
+        </article>
+        <article class="card">
+          <div class="icon icon-coral">&#128218;</div>
+          <h3>Knowledge Base</h3>
+          <p>Everything your bot learned, in one place. Add or remove content any time.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="section section-alt" id="how">
+    <div class="container">
+      <div class="section-head">
+        <span class="pill">How it works</span>
+        <h2>Live in three simple steps</h2>
+        <p>No developer, no installation, no long setup.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <span class="step-no">1</span>
+          <h3>Add your website</h3>
+          <p>Sign up and enter your website's name and address in the dashboard.</p>
+        </div>
+        <div class="step">
+          <span class="step-no">2</span>
+          <h3>Train your bot</h3>
+          <p>Paste your FAQs, services, prices and policies. You can see everything it learned.</p>
+        </div>
+        <div class="step">
+          <span class="step-no">3</span>
+          <h3>Paste one snippet</h3>
+          <p>Add the code before <code>&lt;/body&gt;</code> and your AI team starts answering.</p>
+        </div>
+      </div>
+
+      <div class="code-box">
+        <div class="code-head">
+          <span>Paste this on your website</span>
+          <button class="btn btn-sm btn-ghost" id="copyBtn">Copy code</button>
+        </div>
+<pre id="snippet">&lt;script src="https://webtiqai.com/widget.js"
+        data-site="your-site-id"&gt;&lt;/script&gt;</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BOTS ============ -->
+  <section class="section" id="bots">
+    <div class="container">
+      <div class="section-head">
+        <span class="pill">The team</span>
+        <h2>Meet your bots</h2>
+        <p>Four small bots, each with one job — working together on every question.</p>
+      </div>
+
+      <div class="cards">
+        <article class="card bot-card">
+          <div class="bot-face bot-manager">&#129504;</div>
+          <h3>The Manager</h3>
+          <span class="tag">Always on</span>
+          <p>"I read every question and pass it to the right teammate."</p>
+        </article>
+        <article class="card bot-card">
+          <div class="bot-face bot-recep">&#128129;</div>
+          <h3>The Receptionist</h3>
+          <span class="tag">Always on</span>
+          <p>"I find the answer in your content and reply in seconds, in the visitor's language."</p>
+        </article>
+        <article class="card bot-card">
+          <div class="bot-face bot-checker">&#128269;</div>
+          <h3>The Checker</h3>
+          <span class="tag">On by default</span>
+          <p>"I double-check every reply against your content and show you the exact quote."</p>
+        </article>
+        <article class="card bot-card">
+          <div class="bot-face bot-crawler">&#128375;</div>
+          <h3>The Crawler</h3>
+          <span class="tag">When you train</span>
+          <p>"When you add content, I read it and learn it. You can watch my progress."</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRICING ============ -->
+  <section class="section section-alt" id="pricing">
+    <div class="container">
+      <div class="section-head">
+        <span class="pill">Pricing</span>
+        <h2>Simple, honest pricing</h2>
+        <p>Start free. Upgrade only when your chats grow.</p>
+      </div>
+
+      <div class="toggle-wrap">
+        <span class="toggle-label active" id="labelMonthly">Monthly</span>
+        <button class="toggle" id="planToggle" aria-label="Switch billing"><span class="knob"></span></button>
+        <span class="toggle-label" id="labelYearly">Yearly <small>(save 20%)</small></span>
+      </div>
+
+      <div class="cards price-cards">
+        <article class="card plan">
+          <h3>Starter</h3>
+          <p class="plan-price">&#8377;<span class="amount" data-m="0" data-y="0">0</span><span class="per">/month</span></p>
+          <p class="plan-desc">For trying things out.</p>
+          <ul>
+            <li>1 website</li>
+            <li>100 chats / month</li>
+            <li>Knowledge base</li>
+            <li>Email support</li>
+          </ul>
+          <a href="demo.html" class="btn btn-ghost btn-block">Start free</a>
+        </article>
+
+        <article class="card plan popular">
+          <span class="ribbon">Most popular</span>
+          <h3>Growth</h3>
+          <p class="plan-price">&#8377;<span class="amount" data-m="999" data-y="799">999</span><span class="per">/month</span></p>
+          <p class="plan-desc">For growing businesses.</p>
+          <ul>
+            <li>3 websites</li>
+            <li>5,000 chats / month</li>
+            <li>Live traffic + leads</li>
+            <li>Push notifications</li>
+          </ul>
+          <a href="demo.html" class="btn btn-primary btn-block">Choose Growth</a>
+        </article>
+
+        <article class="card plan">
+          <h3>Business</h3>
+          <p class="plan-price">&#8377;<span class="amount" data-m="2499" data-y="1999">2499</span><span class="per">/month</span></p>
+          <p class="plan-desc">For busy support teams.</p>
+          <ul>
+            <li>Unlimited websites</li>
+            <li>Unlimited chats</li>
+            <li>Team inbox</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="demo.html" class="btn btn-ghost btn-block">Choose Business</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="section" id="faq">
+    <div class="container narrow">
+      <div class="section-head">
+        <span class="pill">FAQ</span>
+        <h2>Questions people ask</h2>
+      </div>
+
+      <div class="faq-list" id="faqList">
+        <div class="faq-item">
+          <button class="faq-q">Do I need to know coding? <span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>No. You copy one line of code and paste it into your website. Everything else happens in the dashboard.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">How does the bot learn about my business? <span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>You paste your FAQs, services, prices or policies into the Knowledge Base. The bot answers only from that content, so it never makes things up.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">What if the bot does not know the answer? <span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>It says so honestly, offers to connect your team, and collects the visitor's name and email as a lead.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Which websites does it work on? <span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Any website where you can add a script tag — WordPress, Shopify, Wix, Webflow, or a plain HTML site.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is my data safe? <span class="faq-icon">+</span></button>
+          <div class="faq-a"><p>Your content is used only to answer your visitors. You can delete anything from the Knowledge Base at any time.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section section-alt" id="contact">
+    <div class="container narrow">
+      <div class="section-head">
+        <span class="pill">Contact</span>
+        <h2>Talk to us</h2>
+        <p>Tell us about your website and we will set up your first bot.</p>
+      </div>
+
+      <form class="form" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input type="text" id="name" placeholder="Your full name" />
+            <small class="error" id="errName"></small>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="you@company.com" />
+            <small class="error" id="errEmail"></small>
+          </div>
+        </div>
+        <div class="field">
+          <label for="website">Website</label>
+          <input type="text" id="website" placeholder="www.yourbusiness.com" />
+          <small class="error" id="errWebsite"></small>
+        </div>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" rows="4" placeholder="What should your bot be able to answer?"></textarea>
+          <small class="error" id="errMessage"></small>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Send message</button>
+        <p class="form-success" id="formSuccess">Thank you! Your message has been received. We will reply within 24 hours.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <a href="index.html" class="logo">
+          <span class="logo-mark">W</span>
+          <span class="logo-text">webtiq<span class="accent">ai</span></span>
+        </a>
+        <p class="footer-note">A friendly AI support team for your website. You can watch it work.</p>
+      </div>
+      <nav class="footer-links">
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href="demo.html">Demo</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+    <p class="copyright">&copy; 2026 WebtiqAI — Mini Project</p>
+  </footer>
+
+  <!-- ============ FLOATING CHAT WIDGET ============ -->
+  <button class="widget-btn" id="widgetBtn" aria-label="Open chat">&#128172;</button>
+  <div class="widget" id="widget">
+    <div class="widget-head">
+      <div><strong>WebtiqAI Assistant</strong><br /><small>Ask me about WebtiqAI</small></div>
+      <button id="widgetClose" aria-label="Close chat">&times;</button>
+    </div>
+    <div class="widget-body" id="widgetBody"></div>
+    <form class="widget-foot" id="widgetForm">
+      <input type="text" id="widgetInput" placeholder="Type your question..." autocomplete="off" />
+      <button type="submit">&#10148;</button>
+    </form>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

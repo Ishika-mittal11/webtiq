@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Live Demo — WebtiqAI</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">W</span>
+        <span class="logo-text">webtiq<span class="accent">ai</span></span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#how">How it works</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html" class="btn btn-ghost btn-sm">Back to home</a>
+      </nav>
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">&#9776;</button>
+    </div>
+  </header>
+
+  <!-- ============ DEMO HEADER ============ -->
+  <section class="demo-hero">
+    <div class="container">
+      <span class="pill">Live demo</span>
+      <h1>Train your bot, then talk to it</h1>
+      <p class="lead">
+        This is how WebtiqAI works in real life. Add a few questions and answers on the left
+        (that is your Knowledge Base), then ask the bot on the right. It answers
+        <strong>only</strong> from what you taught it — exactly like the real product.
+      </p>
+      <p><span id="apiStatus" class="api-status">Checking backend...</span></p>
+    </div>
+  </section>
+
+  <!-- ============ DEMO APP ============ -->
+  <section class="section">
+    <div class="container demo-grid">
+
+      <!-- LEFT: Knowledge Base -->
+      <div class="panel">
+        <div class="panel-head">
+          <h2>&#128218; Knowledge Base</h2>
+          <span class="counter" id="kbCount">0 items</span>
+        </div>
+
+        <form class="kb-form" id="kbForm">
+          <div class="field">
+            <label for="kbQ">Question</label>
+            <input type="text" id="kbQ" placeholder="Do you offer home delivery?" />
+          </div>
+          <div class="field">
+            <label for="kbA">Answer</label>
+            <textarea id="kbA" rows="3" placeholder="Yes, we deliver free within the city in 2 days."></textarea>
+          </div>
+          <small class="error" id="kbError"></small>
+          <div class="kb-btns">
+            <button type="submit" class="btn btn-primary btn-sm">Teach the bot</button>
+            <button type="button" class="btn btn-ghost btn-sm" id="kbSample">Load sample data</button>
+            <button type="button" class="btn btn-ghost btn-sm" id="kbClear">Clear all</button>
+          </div>
+        </form>
+
+        <div class="kb-list" id="kbList"></div>
+        <p class="panel-note">Saved in your browser with localStorage — refresh the page and it is still there.</p>
+      </div>
+
+      <!-- RIGHT: Chat -->
+      <div class="panel panel-chat">
+        <div class="panel-head">
+          <h2>&#128172; Chat with your bot</h2>
+          <span class="counter"><span class="dot-online"></span> Online</span>
+        </div>
+
+        <div class="demo-chat" id="demoChat"></div>
+
+        <form class="demo-chat-foot" id="demoForm">
+          <input type="text" id="demoInput" placeholder="Ask your bot a question..." autocomplete="off" />
+          <button type="submit" class="btn btn-primary btn-sm">Send</button>
+        </form>
+
+        <div class="suggestions" id="suggestions"></div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ LEADS ============ -->
+  <section class="section section-alt">
+    <div class="container narrow">
+      <div class="section-head">
+        <span class="pill">Dashboard preview</span>
+        <h2>Leads collected by the bot</h2>
+        <p>When the bot cannot answer, it asks for contact details. Those leads land here.</p>
+      </div>
+
+      <table class="leads-table">
+        <thead>
+          <tr><th>#</th><th>Question asked</th><th>Status</th><th>Time</th></tr>
+        </thead>
+        <tbody id="leadsBody">
+          <tr class="empty-row"><td colspan="4">No unanswered questions yet. Ask the bot something it was not taught.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <a href="index.html" class="logo">
+          <span class="logo-mark">W</span>
+          <span class="logo-text">webtiq<span class="accent">ai</span></span>
+        </a>
+        <p class="footer-note">A friendly AI support team for your website. You can watch it work.</p>
+      </div>
+      <nav class="footer-links">
+        <a href="index.html#features">Features</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+    <p class="copyright">&copy; 2026 WebtiqAI — Mini Project</p>
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/demo.js"></script>
+</body>
+</html>

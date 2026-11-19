@@ -1,0 +1,28 @@
+# ---- secrets (never commit) ----
+.env
+*.env
+!.env.example
+server/.env
+
+# ---- dependencies ----
+node_modules/
+server/node_modules/
+
+# ---- runtime data (created automatically by the server) ----
+server/data/
+
+# ---- OS / editor / Office lock files ----
+~$*
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+
+# ---- logs ----
+*.log
+npm-debug.log*
+
+# ---- college template files (not part of the project) ----
+ppt_build/Front Page_PROJECT.docx
+ppt_build/WEB DEVELOPMENT PROJECT REPORT.docx

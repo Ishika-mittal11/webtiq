@@ -1,0 +1,940 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  body { margin:0; background:#fff; font-family: "Segoe UI", Arial, sans-serif; }
+  .fig { background:#fff; padding:14px; display:inline-block; }
+  svg { display:block; }
+  text { font-family: "Segoe UI", Arial, sans-serif; }
+  .t  { font-size:17px; fill:#15192e; }
+  .tb { font-size:17px; fill:#15192e; font-weight:700; }
+  .ts { font-size:14px; fill:#4a4f6a; }
+  .tss{ font-size:12.5px; fill:#5b6080; }
+  .tw { font-size:17px; fill:#ffffff; font-weight:700; }
+  .tws{ font-size:14px; fill:#eef2ff; }
+  .lbl{ font-size:13.5px; fill:#6c4df6; font-weight:700; }
+  .card{ fill:#ffffff; stroke:#15192e; stroke-width:2; }
+  .ln { stroke:#15192e; stroke-width:2; fill:none; }
+  .lnd{ stroke:#8b90ab; stroke-width:2; fill:none; stroke-dasharray:7 5; }
+</style>
+</head>
+<body>
+
+<!-- ============================= FIG: USE CASE ============================= -->
+<div class="fig" id="usecase">
+<svg width="1180" height="740" viewBox="0 0 1180 740">
+  <defs>
+    <marker id="ar" markerWidth="10" markerHeight="10" refX="9" refY="3.2" orient="auto">
+      <path d="M0,0 L9,3.2 L0,6.4 z" fill="#15192e"/>
+    </marker>
+  </defs>
+  <rect x="250" y="20" width="680" height="570" rx="18" fill="#f7f5ff" stroke="#6c4df6" stroke-width="2"/>
+  <text class="tb" x="590" y="52" text-anchor="middle" fill="#6c4df6">WebtiqAI System</text>
+
+  <!-- actor: visitor -->
+  <g>
+    <circle cx="120" cy="190" r="22" fill="#fff" stroke="#15192e" stroke-width="2.5"/>
+    <path class="ln" stroke-width="2.5" d="M120,212 L120,268 M92,236 L148,236 M120,268 L96,318 M120,268 L144,318"/>
+    <text class="tb" x="120" y="348" text-anchor="middle">Website</text>
+    <text class="tb" x="120" y="370" text-anchor="middle">Visitor</text>
+  </g>
+  <!-- actor: owner -->
+  <g>
+    <circle cx="1060" cy="190" r="22" fill="#fff" stroke="#15192e" stroke-width="2.5"/>
+    <path class="ln" stroke-width="2.5" d="M1060,212 L1060,268 M1032,236 L1088,236 M1060,268 L1036,318 M1060,268 L1084,318"/>
+    <text class="tb" x="1060" y="348" text-anchor="middle">Business</text>
+    <text class="tb" x="1060" y="370" text-anchor="middle">Owner</text>
+  </g>
+  <!-- actor: openai (secondary) -->
+  <g>
+    <circle cx="590" cy="636" r="20" fill="#fff" stroke="#0f9b8e" stroke-width="2.5"/>
+    <path class="ln" stroke="#0f9b8e" stroke-width="2.5" d="M590,656 L590,682 M568,668 L612,668 M590,682 L574,706 M590,682 L606,706"/>
+    <text class="tb" x="660" y="676" fill="#0f9b8e">OpenAI API  &lt;&lt;secondary actor&gt;&gt;</text>
+  </g>
+
+  <!-- use cases: left column (visitor) -->
+  <g>
+    <ellipse cx="420" cy="100" rx="130" ry="33" fill="#fff" stroke="#15192e" stroke-width="2"/>
+    <text class="t" x="420" y="106" text-anchor="middle">Browse website</text>
+
+    <ellipse cx="420" cy="180" rx="130" ry="33" fill="#fff" stroke="#15192e" stroke-width="2"/>
+    <text class="t" x="420" y="186" text-anchor="middle">Chat with widget</text>
+
+    <ellipse cx="420" cy="260" rx="130" ry="33" fill="#fff" stroke="#15192e" stroke-width="2"/>
+    <text class="t" x="420" y="266" text-anchor="middle">Ask the demo bot</text>
+
+    <ellipse cx="420" cy="340" rx="130" ry="33" fill="#fff" stroke="#15192e" stroke-width="2"/>
+    <text class="t" x="420" y="346" text-anchor="middle">Submit contact form</text>
+
+    <ellipse cx="420" cy="420" rx="130" ry="33" fill="#fff" stroke="#15192e" stroke-width="2"/>
+    <text class="t" x="420" y="426" text-anchor="middle">Compare plans</text>
+  </g>
+
+  <!-- use cases: right column (owner) -->
+  <g>
+    <ellipse cx="770" cy="100" rx="130" ry="33" fill="#fff" stroke="#15192e" stroke-width="2"/>
+    <text class="t" x="770" y="106" text-anchor="middle">Train the bot</text>
+
+    <ellipse cx="770" cy="180" rx="130" ry="33" fill="#fff" stroke="#15192e" stroke-width="2"/>
+    <text class="t" x="770" y="186" text-anchor="middle">View knowledge base</text>
+
+    <ellipse cx="770" cy="260" rx="130" ry="33" fill="#fff" stroke="#15192e" stroke-width="2"/>
+    <text class="t" x="770" y="266" text-anchor="middle">Delete / clear items</text>
+
+    <ellipse cx="770" cy="340" rx="130" ry="33" fill="#fff" stroke="#15192e" stroke-width="2"/>
+    <text class="t" x="770" y="346" text-anchor="middle">Load sample data</text>
+
+    <ellipse cx="770" cy="420" rx="130" ry="33" fill="#fff" stroke="#15192e" stroke-width="2"/>
+    <text class="t" x="770" y="426" text-anchor="middle">Review captured leads</text>
+  </g>
+
+  <!-- shared use cases -->
+  <ellipse cx="420" cy="510" rx="130" ry="33" fill="#f2effe" stroke="#6c4df6" stroke-width="2"/>
+  <text class="t" x="420" y="516" text-anchor="middle">Check system health</text>
+
+  <ellipse cx="770" cy="510" rx="140" ry="33" fill="#eafaf7" stroke="#0f9b8e" stroke-width="2"/>
+  <text class="t" x="770" y="503" text-anchor="middle">Generate grounded</text>
+  <text class="t" x="770" y="523" text-anchor="middle">answer</text>
+
+  <!-- links visitor -->
+  <path class="ln" d="M160,185 L288,103"/>
+  <path class="ln" d="M160,190 L290,180"/>
+  <path class="ln" d="M160,198 L290,258"/>
+  <path class="ln" d="M160,205 L290,336"/>
+  <path class="ln" d="M160,212 L290,414"/>
+  <path class="ln" d="M152,230 L292,500"/>
+  <!-- links owner -->
+  <path class="ln" d="M1020,185 L902,103"/>
+  <path class="ln" d="M1020,190 L902,180"/>
+  <path class="ln" d="M1020,198 L902,258"/>
+  <path class="ln" d="M1020,205 L902,336"/>
+  <path class="ln" d="M1020,212 L902,414"/>
+  <path class="ln" d="M1028,230 L910,500"/>
+  <!-- openai link -->
+  <path class="ln" stroke="#0f9b8e" d="M608,620 L742,540"/>
+  <!-- include -->
+  <path class="lnd" stroke="#0f9b8e" marker-end="url(#ar)" d="M520,196 L640,496"/>
+  <text class="lbl" x="536" y="238" fill="#0f9b8e">&lt;&lt;include&gt;&gt;</text>
+  <path class="lnd" stroke="#0f9b8e" marker-end="url(#ar)" d="M520,272 L636,492"/>
+</svg>
+</div>
+
+<!-- ============================= FIG: ER ============================= -->
+<div class="fig" id="er">
+<svg width="1180" height="730" viewBox="0 0 1180 730">
+  <defs>
+    <marker id="ar2" markerWidth="10" markerHeight="10" refX="9" refY="3.2" orient="auto">
+      <path d="M0,0 L9,3.2 L0,6.4 z" fill="#15192e"/>
+    </marker>
+  </defs>
+
+  <!-- BUSINESS OWNER -->
+  <g>
+    <rect x="40" y="60" width="250" height="150" rx="10" class="card"/>
+    <rect x="40" y="60" width="250" height="40" rx="10" fill="#6c4df6"/>
+    <rect x="40" y="88" width="250" height="12" fill="#6c4df6"/>
+    <text class="tw" x="165" y="87" text-anchor="middle">BUSINESS OWNER</text>
+    <text class="ts" x="58" y="128">owner_name : text</text>
+    <text class="ts" x="58" y="156">business_name : text</text>
+    <text class="ts" x="58" y="184">website_url : text</text>
+  </g>
+
+  <!-- KNOWLEDGE_ITEM -->
+  <g>
+    <rect x="430" y="40" width="310" height="212" rx="10" class="card"/>
+    <rect x="430" y="40" width="310" height="40" rx="10" fill="#6c4df6"/>
+    <rect x="430" y="68" width="310" height="12" fill="#6c4df6"/>
+    <text class="tw" x="585" y="67" text-anchor="middle">KNOWLEDGE_ITEM</text>
+    <text class="ts" x="448" y="108" font-weight="700" fill="#15192e" text-decoration="underline">id : number  (PK)</text>
+    <text class="ts" x="448" y="140">q : text        (question)</text>
+    <text class="ts" x="448" y="172">a : text        (answer)</text>
+    <text class="ts" x="448" y="204">createdAt : ISO date-time</text>
+    <text class="tss" x="448" y="232">stored in knowledge.json</text>
+  </g>
+
+  <!-- VISITOR -->
+  <g>
+    <rect x="40" y="400" width="250" height="122" rx="10" class="card"/>
+    <rect x="40" y="400" width="250" height="40" rx="10" fill="#0f9b8e"/>
+    <rect x="40" y="428" width="250" height="12" fill="#0f9b8e"/>
+    <text class="tw" x="165" y="427" text-anchor="middle">VISITOR</text>
+    <text class="ts" x="58" y="468">browser_session : text</text>
+    <text class="ts" x="58" y="496">visited_page : text</text>
+  </g>
+
+  <!-- QUESTION (transient) -->
+  <g>
+    <rect x="430" y="380" width="310" height="162" rx="10" fill="#fcfbff" stroke="#8b90ab" stroke-width="2" stroke-dasharray="8 5"/>
+    <rect x="430" y="380" width="310" height="40" rx="10" fill="#8b90ab"/>
+    <rect x="430" y="408" width="310" height="12" fill="#8b90ab"/>
+    <text class="tw" x="585" y="407" text-anchor="middle">QUESTION  (transient)</text>
+    <text class="ts" x="448" y="448">message : text</text>
+    <text class="ts" x="448" y="478">asked_at : ISO date-time</text>
+    <text class="tss" x="448" y="508">never stored unless it</text>
+    <text class="tss" x="448" y="528">becomes a lead</text>
+  </g>
+
+  <!-- LEAD -->
+  <g>
+    <rect x="860" y="230" width="290" height="190" rx="10" class="card"/>
+    <rect x="860" y="230" width="290" height="40" rx="10" fill="#e07c0a"/>
+    <rect x="860" y="258" width="290" height="12" fill="#e07c0a"/>
+    <text class="tw" x="1005" y="257" text-anchor="middle">LEAD</text>
+    <text class="ts" x="878" y="298" font-weight="700" fill="#15192e" text-decoration="underline">id : number  (PK)</text>
+    <text class="ts" x="878" y="330">question : text</text>
+    <text class="ts" x="878" y="362">status : text</text>
+    <text class="ts" x="878" y="394">time : ISO date-time</text>
+  </g>
+
+  <!-- MESSAGE -->
+  <g>
+    <rect x="860" y="470" width="290" height="232" rx="10" class="card"/>
+    <rect x="860" y="470" width="290" height="40" rx="10" fill="#0f9b8e"/>
+    <rect x="860" y="498" width="290" height="12" fill="#0f9b8e"/>
+    <text class="tw" x="1005" y="497" text-anchor="middle">MESSAGE</text>
+    <text class="ts" x="878" y="538" font-weight="700" fill="#15192e" text-decoration="underline">id : number  (PK)</text>
+    <text class="ts" x="878" y="568">name : text</text>
+    <text class="ts" x="878" y="598">email : text</text>
+    <text class="ts" x="878" y="628">website : text</text>
+    <text class="ts" x="878" y="658">message : text</text>
+    <text class="ts" x="878" y="684">time : ISO date-time</text>
+  </g>
+
+  <!-- relationships -->
+  <path class="ln" marker-end="url(#ar2)" d="M290,135 L424,135"/>
+  <text class="lbl" x="357" y="122" text-anchor="middle">trains</text>
+  <text class="tss" x="302" y="155">1</text>
+  <text class="tss" x="408" y="155">N</text>
+
+  <path class="ln" marker-end="url(#ar2)" d="M290,460 L424,460"/>
+  <text class="lbl" x="357" y="447" text-anchor="middle">asks</text>
+  <text class="tss" x="302" y="480">1</text>
+  <text class="tss" x="408" y="480">N</text>
+
+  <path class="ln" marker-end="url(#ar2)" d="M585,374 L585,258"/>
+  <text class="lbl" x="598" y="320">matched against</text>
+  <text class="tss" x="568" y="366">N</text>
+  <text class="tss" x="568" y="272">N</text>
+
+  <path class="ln" marker-end="url(#ar2)" d="M740,420 L854,350"/>
+  <text class="lbl" x="800" y="372" text-anchor="middle">generates</text>
+  <text class="tss" x="748" y="434">1</text>
+  <text class="tss" x="838" y="342">0..1</text>
+
+  <path class="ln" marker-end="url(#ar2)" d="M290,500 L560,600 L854,580"/>
+  <text class="lbl" x="580" y="625" text-anchor="middle">submits</text>
+  <text class="tss" x="300" y="520">1</text>
+  <text class="tss" x="836" y="572">N</text>
+</svg>
+</div>
+
+<!-- ============================= FIG: DFD 0 ============================= -->
+<div class="fig" id="dfd0">
+<svg width="1100" height="520" viewBox="0 0 1100 520">
+  <defs>
+    <marker id="ar3" markerWidth="10" markerHeight="10" refX="9" refY="3.2" orient="auto">
+      <path d="M0,0 L9,3.2 L0,6.4 z" fill="#15192e"/>
+    </marker>
+  </defs>
+
+  <!-- central process -->
+  <circle cx="550" cy="270" r="118" fill="#f2effe" stroke="#6c4df6" stroke-width="3"/>
+  <text class="tb" x="550" y="248" text-anchor="middle" font-size="22">0</text>
+  <text class="tb" x="550" y="282" text-anchor="middle">WebtiqAI</text>
+  <text class="tb" x="550" y="306" text-anchor="middle">Chatbot System</text>
+
+  <!-- visitor -->
+  <rect x="40" y="130" width="230" height="86" rx="4" class="card"/>
+  <text class="tb" x="155" y="168" text-anchor="middle">Website</text>
+  <text class="tb" x="155" y="192" text-anchor="middle">Visitor</text>
+
+  <!-- owner -->
+  <rect x="830" y="130" width="230" height="86" rx="4" class="card"/>
+  <text class="tb" x="945" y="168" text-anchor="middle">Business</text>
+  <text class="tb" x="945" y="192" text-anchor="middle">Owner</text>
+
+  <!-- openai -->
+  <rect x="435" y="24" width="230" height="74" rx="4" fill="#eafaf7" stroke="#0f9b8e" stroke-width="2"/>
+  <text class="tb" x="550" y="56" text-anchor="middle" fill="#0f9b8e">OpenAI</text>
+  <text class="ts" x="550" y="80" text-anchor="middle" fill="#0f9b8e">Chat Completions API</text>
+
+  <!-- flows visitor -->
+  <path class="ln" marker-end="url(#ar3)" d="M270,160 C360,160 400,195 440,215"/>
+  <text class="ts" x="300" y="148">question / contact details</text>
+  <path class="ln" marker-end="url(#ar3)" d="M448,260 C400,290 340,290 272,290"/>
+  <text class="ts" x="292" y="312">answer + source, status badge</text>
+
+  <!-- flows owner -->
+  <path class="ln" marker-end="url(#ar3)" d="M830,160 C740,160 700,195 660,215"/>
+  <text class="ts" x="676" y="148" text-anchor="end">new Q&amp;A pair, delete request</text>
+  <path class="ln" marker-end="url(#ar3)" d="M652,260 C700,290 760,290 828,290"/>
+  <text class="ts" x="818" y="312" text-anchor="end">knowledge list, lead list</text>
+
+  <!-- flows openai -->
+  <path class="ln" stroke="#0f9b8e" marker-end="url(#ar3)" d="M520,150 L520,102"/>
+  <text class="ts" x="506" y="132" text-anchor="end" fill="#0f9b8e">prompt + content</text>
+  <path class="ln" stroke="#0f9b8e" marker-end="url(#ar3)" d="M582,102 L582,150"/>
+  <text class="ts" x="596" y="132" fill="#0f9b8e">grounded reply</text>
+
+  <text class="tss" x="550" y="470" text-anchor="middle">Context level (Level 0): the whole system is one process. No data stores are shown at this level.</text>
+</svg>
+</div>
+
+<!-- ============================= FIG: DFD 1 ============================= -->
+<div class="fig" id="dfd1x" style="display:none">
+<svg width="1180" height="820" viewBox="0 0 1180 820">
+  <defs>
+    <marker id="ar4" markerWidth="10" markerHeight="10" refX="9" refY="3.2" orient="auto">
+      <path d="M0,0 L9,3.2 L0,6.4 z" fill="#15192e"/>
+    </marker>
+  </defs>
+
+  <!-- external entities -->
+  <rect x="30" y="60" width="190" height="78" rx="4" class="card"/>
+  <text class="tb" x="125" y="94" text-anchor="middle">Website</text>
+  <text class="tb" x="125" y="118" text-anchor="middle">Visitor</text>
+
+  <rect x="30" y="470" width="190" height="78" rx="4" class="card"/>
+  <text class="tb" x="125" y="504" text-anchor="middle">Business</text>
+  <text class="tb" x="125" y="528" text-anchor="middle">Owner</text>
+
+  <rect x="960" y="60" width="190" height="78" rx="4" fill="#eafaf7" stroke="#0f9b8e" stroke-width="2"/>
+  <text class="tb" x="1055" y="94" text-anchor="middle" fill="#0f9b8e">OpenAI</text>
+  <text class="ts" x="1055" y="117" text-anchor="middle" fill="#0f9b8e">API</text>
+
+  <!-- processes -->
+  <circle cx="470" cy="110" r="78" fill="#f2effe" stroke="#6c4df6" stroke-width="2.5"/>
+  <text class="tb" x="470" y="92" text-anchor="middle">2.0</text>
+  <text class="ts" x="470" y="116" text-anchor="middle">Answer the</text>
+  <text class="ts" x="470" y="136" text-anchor="middle">question</text>
+
+  <circle cx="470" cy="520" r="78" fill="#f2effe" stroke="#6c4df6" stroke-width="2.5"/>
+  <text class="tb" x="470" y="502" text-anchor="middle">1.0</text>
+  <text class="ts" x="470" y="526" text-anchor="middle">Manage</text>
+  <text class="ts" x="470" y="546" text-anchor="middle">knowledge base</text>
+
+  <circle cx="790" cy="300" r="78" fill="#fff6ea" stroke="#e07c0a" stroke-width="2.5"/>
+  <text class="tb" x="790" y="282" text-anchor="middle">3.0</text>
+  <text class="ts" x="790" y="306" text-anchor="middle">Capture the</text>
+  <text class="ts" x="790" y="326" text-anchor="middle">lead</text>
+
+  <circle cx="200" cy="700" r="78" fill="#eafaf7" stroke="#0f9b8e" stroke-width="2.5"/>
+  <text class="tb" x="200" y="682" text-anchor="middle">4.0</text>
+  <text class="ts" x="200" y="706" text-anchor="middle">Handle contact</text>
+  <text class="ts" x="200" y="726" text-anchor="middle">message</text>
+
+  <circle cx="620" cy="700" r="78" fill="#f2effe" stroke="#6c4df6" stroke-width="2.5"/>
+  <text class="tb" x="620" y="682" text-anchor="middle">5.0</text>
+  <text class="ts" x="620" y="706" text-anchor="middle">Report system</text>
+  <text class="ts" x="620" y="726" text-anchor="middle">health</text>
+
+  <!-- data stores -->
+  <g>
+    <rect x="690" y="500" width="300" height="52" fill="#f6f7fb" stroke="#15192e" stroke-width="2"/>
+    <line class="ln" x1="750" y1="500" x2="750" y2="552"/>
+    <text class="tb" x="720" y="532" text-anchor="middle">D1</text>
+    <text class="t" x="770" y="532">knowledge.json</text>
+  </g>
+  <g>
+    <rect x="690" y="600" width="300" height="52" fill="#fff6ea" stroke="#15192e" stroke-width="2"/>
+    <line class="ln" x1="750" y1="600" x2="750" y2="652"/>
+    <text class="tb" x="720" y="632" text-anchor="middle">D2</text>
+    <text class="t" x="770" y="632">leads.json</text>
+  </g>
+  <g>
+    <rect x="690" y="700" width="300" height="52" fill="#eafaf7" stroke="#15192e" stroke-width="2"/>
+    <line class="ln" x1="750" y1="700" x2="750" y2="752"/>
+    <text class="tb" x="720" y="732" text-anchor="middle">D3</text>
+    <text class="t" x="770" y="732">messages.json</text>
+  </g>
+
+  <!-- flows -->
+  <path class="ln" marker-end="url(#ar4)" d="M220,82 L390,96"/>
+  <text class="tss" x="238" y="70">question</text>
+  <path class="ln" marker-end="url(#ar4)" d="M392,132 L222,124"/>
+  <text class="tss" x="238" y="152">answer + source</text>
+
+  <path class="ln" marker-end="url(#ar4)" d="M548,96 L954,86"/>
+  <text class="tss" x="700" y="78">prompt (rules + content + question)</text>
+  <path class="ln" stroke="#0f9b8e" marker-end="url(#ar4)" d="M956,124 L550,130"/>
+  <text class="tss" x="700" y="152" fill="#0f9b8e">answer text or NO_ANSWER</text>
+
+  <path class="ln" marker-end="url(#ar4)" d="M478,190 L700,498"/>
+  <text class="tss" x="520" y="330" transform="rotate(54 520 330)">read all Q&amp;A pairs</text>
+
+  <path class="ln" marker-end="url(#ar4)" d="M540,152 L730,238"/>
+  <text class="tss" x="600" y="186">NO_ANSWER &#8594; unanswered question</text>
+
+  <path class="ln" marker-end="url(#ar4)" d="M808,376 L838,596"/>
+  <text class="tss" x="828" y="490">append lead record</text>
+
+  <path class="ln" marker-end="url(#ar4)" d="M220,500 L392,512"/>
+  <text class="tss" x="238" y="488">new Q&amp;A / delete id</text>
+  <path class="ln" marker-end="url(#ar4)" d="M548,520 L686,524"/>
+  <text class="tss" x="556" y="556">write / read</text>
+  <path class="ln" marker-end="url(#ar4)" d="M714,556 L520,586 L470,600"/>
+  <text class="tss" x="520" y="610">current list</text>
+  <path class="ln" marker-end="url(#ar4)" d="M392,546 L222,540"/>
+  <text class="tss" x="238" y="566">knowledge table</text>
+
+  <path class="ln" marker-end="url(#ar4)" d="M868,328 L250,660"/>
+  <text class="tss" x="430" y="470" transform="rotate(-28 430 470)">lead list to owner's screen</text>
+
+  <path class="ln" marker-end="url(#ar4)" d="M130,560 L168,626"/>
+  <text class="tss" x="60" y="604">form data</text>
+  <path class="ln" marker-end="url(#ar4)" d="M278,716 L686,724"/>
+  <text class="tss" x="400" y="744">append message record</text>
+
+  <path class="ln" marker-end="url(#ar4)" d="M698,520 L660,628"/>
+  <text class="tss" x="612" y="596" text-anchor="end">item count</text>
+  <path class="ln" marker-end="url(#ar4)" d="M560,672 L390,560"/>
+  <text class="tss" x="430" y="648">mode (AI / offline)</text>
+</svg>
+</div>
+
+<!-- ============================= FIG: DFD 1 (clean) ============================= -->
+<div class="fig" id="dfd1">
+<svg width="1180" height="920" viewBox="0 0 1180 920">
+  <defs>
+    <marker id="ar4b" markerWidth="10" markerHeight="10" refX="9" refY="3.2" orient="auto">
+      <path d="M0,0 L9,3.2 L0,6.4 z" fill="#15192e"/>
+    </marker>
+    <marker id="ar4g" markerWidth="10" markerHeight="10" refX="9" refY="3.2" orient="auto">
+      <path d="M0,0 L9,3.2 L0,6.4 z" fill="#0f9b8e"/>
+    </marker>
+  </defs>
+
+  <!-- external entities -->
+  <rect x="30" y="150" width="190" height="80" rx="4" class="card"/>
+  <text class="tb" x="125" y="182" text-anchor="middle">Website</text>
+  <text class="tb" x="125" y="206" text-anchor="middle">Visitor</text>
+
+  <rect x="30" y="520" width="190" height="80" rx="4" class="card"/>
+  <text class="tb" x="125" y="552" text-anchor="middle">Business</text>
+  <text class="tb" x="125" y="576" text-anchor="middle">Owner</text>
+
+  <rect x="30" y="760" width="190" height="80" rx="4" class="card"/>
+  <line class="ln" x1="42" y1="760" x2="42" y2="840"/>
+  <text class="tb" x="131" y="792" text-anchor="middle">Website</text>
+  <text class="tb" x="131" y="816" text-anchor="middle">Visitor</text>
+
+  <rect x="880" y="20" width="260" height="76" rx="4" fill="#eafaf7" stroke="#0f9b8e" stroke-width="2"/>
+  <text class="tb" x="1010" y="52" text-anchor="middle" fill="#0f9b8e">OpenAI</text>
+  <text class="ts" x="1010" y="78" text-anchor="middle" fill="#0f9b8e">Chat Completions API</text>
+
+  <!-- processes -->
+  <circle cx="470" cy="190" r="70" fill="#f2effe" stroke="#6c4df6" stroke-width="2.5"/>
+  <text class="tb" x="470" y="174" text-anchor="middle">2.0</text>
+  <text class="ts" x="470" y="198" text-anchor="middle">Answer the</text>
+  <text class="ts" x="470" y="218" text-anchor="middle">question</text>
+
+  <circle cx="470" cy="430" r="68" fill="#fff6ea" stroke="#e07c0a" stroke-width="2.5"/>
+  <text class="tb" x="470" y="414" text-anchor="middle">3.0</text>
+  <text class="ts" x="470" y="438" text-anchor="middle">Capture and</text>
+  <text class="ts" x="470" y="458" text-anchor="middle">list leads</text>
+
+  <circle cx="470" cy="620" r="70" fill="#f2effe" stroke="#6c4df6" stroke-width="2.5"/>
+  <text class="tb" x="470" y="604" text-anchor="middle">1.0</text>
+  <text class="ts" x="470" y="628" text-anchor="middle">Manage</text>
+  <text class="ts" x="470" y="648" text-anchor="middle">knowledge base</text>
+
+  <circle cx="470" cy="800" r="66" fill="#eafaf7" stroke="#0f9b8e" stroke-width="2.5"/>
+  <text class="tb" x="470" y="784" text-anchor="middle">4.0</text>
+  <text class="ts" x="470" y="808" text-anchor="middle">Handle contact</text>
+  <text class="ts" x="470" y="828" text-anchor="middle">message</text>
+
+  <!-- data stores -->
+  <g>
+    <rect x="800" y="250" width="340" height="52" fill="#f6f7fb" stroke="#15192e" stroke-width="2"/>
+    <line class="ln" x1="856" y1="250" x2="856" y2="302"/>
+    <text class="tb" x="828" y="282" text-anchor="middle">D1</text>
+    <text class="t" x="876" y="282">knowledge.json</text>
+  </g>
+  <g>
+    <rect x="800" y="404" width="340" height="52" fill="#fff6ea" stroke="#15192e" stroke-width="2"/>
+    <line class="ln" x1="856" y1="404" x2="856" y2="456"/>
+    <text class="tb" x="828" y="436" text-anchor="middle">D2</text>
+    <text class="t" x="876" y="436">leads.json</text>
+  </g>
+  <g>
+    <rect x="800" y="594" width="340" height="52" fill="#f6f7fb" stroke="#15192e" stroke-width="2"/>
+    <line class="ln" x1="856" y1="594" x2="856" y2="646"/>
+    <line class="ln" x1="810" y1="594" x2="810" y2="646"/>
+    <text class="tb" x="834" y="626" text-anchor="middle">D1</text>
+    <text class="t" x="876" y="626">knowledge.json</text>
+  </g>
+  <g>
+    <rect x="800" y="774" width="340" height="52" fill="#eafaf7" stroke="#15192e" stroke-width="2"/>
+    <line class="ln" x1="856" y1="774" x2="856" y2="826"/>
+    <text class="tb" x="828" y="806" text-anchor="middle">D3</text>
+    <text class="t" x="876" y="806">messages.json</text>
+  </g>
+
+  <!-- visitor <-> 2.0 -->
+  <path class="ln" marker-end="url(#ar4b)" d="M222,164 L398,164"/>
+  <text class="tss" x="310" y="154" text-anchor="middle">question typed in the chat</text>
+  <path class="ln" marker-end="url(#ar4b)" d="M398,222 L222,222"/>
+  <text class="tss" x="310" y="242" text-anchor="middle">answer + source line</text>
+
+  <!-- 2.0 <-> openai -->
+  <path class="ln" stroke="#0f9b8e" marker-end="url(#ar4g)" d="M528,148 L876,62"/>
+  <text class="tss" x="700" y="96" text-anchor="middle" fill="#0f9b8e">prompt = rules + content + question</text>
+  <path class="ln" stroke="#0f9b8e" marker-end="url(#ar4g)" d="M876,92 L532,172"/>
+  <text class="tss" x="700" y="150" text-anchor="middle" fill="#0f9b8e">answer text, or exactly NO_ANSWER</text>
+
+  <!-- 2.0 -> D1 -->
+  <path class="ln" marker-end="url(#ar4b)" d="M534,224 L796,268"/>
+  <text class="tss" x="660" y="230" text-anchor="middle">read all Q&amp;A pairs</text>
+
+  <!-- 2.0 -> 3.0 -->
+  <path class="ln" marker-end="url(#ar4b)" d="M470,262 L470,356"/>
+  <text class="tss" x="486" y="300">unanswered question</text>
+  <text class="tss" x="486" y="324">(NO_ANSWER)</text>
+
+  <!-- 3.0 <-> D2 -->
+  <path class="ln" marker-end="url(#ar4b)" d="M540,422 L796,422"/>
+  <text class="tss" x="668" y="412" text-anchor="middle">append lead record</text>
+  <path class="ln" marker-end="url(#ar4b)" d="M796,444 L540,444"/>
+  <text class="tss" x="668" y="466" text-anchor="middle">read lead list</text>
+
+  <!-- 3.0 -> owner -->
+  <path class="ln" marker-end="url(#ar4b)" d="M406,460 L196,518"/>
+  <text class="tss" x="250" y="478">lead list</text>
+
+  <!-- owner <-> 1.0 -->
+  <path class="ln" marker-end="url(#ar4b)" d="M222,566 L400,600"/>
+  <text class="tss" x="238" y="556">new Q&amp;A pair / delete id</text>
+  <path class="ln" marker-end="url(#ar4b)" d="M400,648 L222,596"/>
+  <text class="tss" x="238" y="652">current knowledge table</text>
+
+  <!-- 1.0 <-> D1 copy -->
+  <path class="ln" marker-end="url(#ar4b)" d="M540,610 L796,610"/>
+  <text class="tss" x="668" y="600" text-anchor="middle">write new item / delete</text>
+  <path class="ln" marker-end="url(#ar4b)" d="M796,632 L540,632"/>
+  <text class="tss" x="668" y="654" text-anchor="middle">stored items</text>
+
+  <!-- visitor(dup) <-> 4.0 -->
+  <path class="ln" marker-end="url(#ar4b)" d="M222,780 L406,780"/>
+  <text class="tss" x="314" y="770" text-anchor="middle">name, email, website, message</text>
+  <path class="ln" marker-end="url(#ar4b)" d="M406,822 L222,822"/>
+  <text class="tss" x="314" y="844" text-anchor="middle">thank-you or validation error</text>
+
+  <!-- 4.0 -> D3 -->
+  <path class="ln" marker-end="url(#ar4b)" d="M536,800 L796,800"/>
+  <text class="tss" x="666" y="790" text-anchor="middle">append message record</text>
+
+  <text class="tss" x="30" y="890">Note: the two D1 boxes are the same store drawn twice (double line), and the lower Website Visitor is a repeated entity, so that no flow line has to cross another.</text>
+  <text class="tss" x="30" y="912">GET /api/health is a status query only &#8212; it reads the item count from D1 and is shown separately in the operating-mode diagram.</text>
+</svg>
+</div>
+
+<!-- ============================= FIG: SCHEMA ============================= -->
+<div class="fig" id="schema">
+<svg width="1160" height="700" viewBox="0 0 1160 700">
+  <rect x="20" y="20" width="520" height="300" rx="12" fill="#f7f5ff" stroke="#6c4df6" stroke-width="2"/>
+  <text class="tb" x="44" y="56" fill="#6c4df6">server/data/ &#8212; the JSON "database"</text>
+  <text class="ts" x="44" y="92" font-family="Consolas, monospace">data/</text>
+  <text class="ts" x="74" y="124" font-family="Consolas, monospace">&#9500;&#9472; knowledge.json   &#8592; what the bot knows</text>
+  <text class="ts" x="74" y="156" font-family="Consolas, monospace">&#9500;&#9472; leads.json       &#8592; questions it could not answer</text>
+  <text class="ts" x="74" y="188" font-family="Consolas, monospace">&#9492;&#9472; messages.json    &#8592; contact form submissions</text>
+  <text class="tss" x="44" y="232">Each file holds one JSON array. One array element = one record (one "row").</text>
+  <text class="tss" x="44" y="258">The array index plays no part: every record carries its own numeric id.</text>
+  <text class="tss" x="44" y="284">readData() parses the file, writeData() writes the whole array back.</text>
+
+  <rect x="580" y="20" width="560" height="300" rx="12" fill="#15192e"/>
+  <text class="tws" x="604" y="54" font-weight="700">One record of knowledge.json</text>
+  <text class="tws" x="604" y="92" font-family="Consolas, monospace">{</text>
+  <text class="tws" x="604" y="122" font-family="Consolas, monospace">   "id": 1763492881734,</text>
+  <text class="tws" x="604" y="152" font-family="Consolas, monospace">   "q": "Do you offer home delivery?",</text>
+  <text class="tws" x="604" y="182" font-family="Consolas, monospace">   "a": "Yes, we deliver across the city</text>
+  <text class="tws" x="604" y="208" font-family="Consolas, monospace">          in 2-3 days...",</text>
+  <text class="tws" x="604" y="238" font-family="Consolas, monospace">   "createdAt": "2026-11-19T04:28:01.734Z"</text>
+  <text class="tws" x="604" y="268" font-family="Consolas, monospace">}</text>
+  <text class="tws" x="604" y="300" font-size="12.5">id comes from Date.now() &#8212; milliseconds since 1970, unique enough here</text>
+
+  <!-- three record cards -->
+  <g>
+    <rect x="20" y="370" width="356" height="300" rx="12" class="card"/>
+    <rect x="20" y="370" width="356" height="46" rx="12" fill="#6c4df6"/>
+    <rect x="20" y="398" width="356" height="18" fill="#6c4df6"/>
+    <text class="tw" x="198" y="400" text-anchor="middle">knowledge.json</text>
+    <text class="ts" x="40" y="448" font-weight="700">id</text><text class="tss" x="150" y="448">number, primary key</text>
+    <text class="ts" x="40" y="486" font-weight="700">q</text><text class="tss" x="150" y="486">string, 5&#8211;300 chars</text>
+    <text class="ts" x="40" y="524" font-weight="700">a</text><text class="tss" x="150" y="524">string, 5&#8211;2000 chars</text>
+    <text class="ts" x="40" y="562" font-weight="700">createdAt</text><text class="tss" x="150" y="562">ISO date-time string</text>
+    <line class="ln" stroke="#d9dbe8" x1="40" y1="586" x2="356" y2="586"/>
+    <text class="tss" x="40" y="616">Written by POST /api/knowledge</text>
+    <text class="tss" x="40" y="644">Read by every chat request</text>
+  </g>
+  <g>
+    <rect x="402" y="370" width="356" height="300" rx="12" class="card"/>
+    <rect x="402" y="370" width="356" height="46" rx="12" fill="#e07c0a"/>
+    <rect x="402" y="398" width="356" height="18" fill="#e07c0a"/>
+    <text class="tw" x="580" y="400" text-anchor="middle">leads.json</text>
+    <text class="ts" x="422" y="448" font-weight="700">id</text><text class="tss" x="532" y="448">number, primary key</text>
+    <text class="ts" x="422" y="486" font-weight="700">question</text><text class="tss" x="532" y="486">string, what was asked</text>
+    <text class="ts" x="422" y="524" font-weight="700">status</text><text class="tss" x="532" y="524">string, "New lead"</text>
+    <text class="ts" x="422" y="562" font-weight="700">time</text><text class="tss" x="532" y="562">ISO date-time string</text>
+    <line class="ln" stroke="#d9dbe8" x1="422" y1="586" x2="738" y2="586"/>
+    <text class="tss" x="422" y="616">Written by saveLead() when the</text>
+    <text class="tss" x="422" y="644">answer is NO_ANSWER</text>
+  </g>
+  <g>
+    <rect x="784" y="370" width="356" height="300" rx="12" class="card"/>
+    <rect x="784" y="370" width="356" height="46" rx="12" fill="#0f9b8e"/>
+    <rect x="784" y="398" width="356" height="18" fill="#0f9b8e"/>
+    <text class="tw" x="962" y="400" text-anchor="middle">messages.json</text>
+    <text class="ts" x="804" y="444" font-weight="700">id</text><text class="tss" x="912" y="444">number, primary key</text>
+    <text class="ts" x="804" y="476" font-weight="700">name</text><text class="tss" x="912" y="476">string, min 3 chars</text>
+    <text class="ts" x="804" y="508" font-weight="700">email</text><text class="tss" x="912" y="508">string, regex checked</text>
+    <text class="ts" x="804" y="540" font-weight="700">website</text><text class="tss" x="912" y="540">string, min 4 chars</text>
+    <text class="ts" x="804" y="572" font-weight="700">message</text><text class="tss" x="912" y="572">string, min 10 chars</text>
+    <text class="ts" x="804" y="604" font-weight="700">time</text><text class="tss" x="912" y="604">ISO date-time string</text>
+    <line class="ln" stroke="#d9dbe8" x1="804" y1="626" x2="1120" y2="626"/>
+    <text class="tss" x="804" y="656">Written by POST /api/contact</text>
+  </g>
+</svg>
+</div>
+
+<!-- ============================= FIG: ARCHITECTURE ============================= -->
+<div class="fig" id="arch">
+<svg width="1160" height="800" viewBox="0 0 1160 800">
+  <defs>
+    <marker id="ar5" markerWidth="11" markerHeight="11" refX="9.5" refY="3.4" orient="auto">
+      <path d="M0,0 L9.5,3.4 L0,6.8 z" fill="#6c4df6"/>
+    </marker>
+    <marker id="ar6" markerWidth="11" markerHeight="11" refX="9.5" refY="3.4" orient="auto">
+      <path d="M0,0 L9.5,3.4 L0,6.8 z" fill="#0f9b8e"/>
+    </marker>
+  </defs>
+
+  <!-- layer 1 -->
+  <rect x="30" y="30" width="1100" height="200" rx="14" fill="#f7f5ff" stroke="#6c4df6" stroke-width="2"/>
+  <text class="tb" x="54" y="66" fill="#6c4df6">LAYER 1 &#8212; PRESENTATION  (runs in the visitor's browser)</text>
+  <g>
+    <rect x="60" y="88" width="235" height="116" rx="10" class="card"/>
+    <text class="tb" x="177" y="124" text-anchor="middle">index.html</text>
+    <text class="tss" x="177" y="150" text-anchor="middle">landing page, 11 sections</text>
+    <text class="tss" x="177" y="174" text-anchor="middle">+ floating chat widget</text>
+  </g>
+  <g>
+    <rect x="320" y="88" width="235" height="116" rx="10" class="card"/>
+    <text class="tb" x="437" y="124" text-anchor="middle">demo.html</text>
+    <text class="tss" x="437" y="150" text-anchor="middle">knowledge base panel,</text>
+    <text class="tss" x="437" y="174" text-anchor="middle">chat panel, leads table</text>
+  </g>
+  <g>
+    <rect x="580" y="88" width="235" height="116" rx="10" class="card"/>
+    <text class="tb" x="697" y="124" text-anchor="middle">css/style.css</text>
+    <text class="tss" x="697" y="150" text-anchor="middle">variables, grid + flexbox,</text>
+    <text class="tss" x="697" y="174" text-anchor="middle">keyframes, media queries</text>
+  </g>
+  <g>
+    <rect x="840" y="88" width="260" height="116" rx="10" class="card"/>
+    <text class="tb" x="970" y="120" text-anchor="middle">js/</text>
+    <text class="tss" x="970" y="146" text-anchor="middle">api.js &#183; script.js &#183; demo.js</text>
+    <text class="tss" x="970" y="170" text-anchor="middle">DOM, events, fetch, fallback</text>
+  </g>
+
+  <!-- arrow down -->
+  <path class="ln" stroke="#6c4df6" stroke-width="3" marker-end="url(#ar5)" d="M400,232 L400,294"/>
+  <text class="lbl" x="414" y="268">fetch() &#8212; JSON over HTTP</text>
+  <path class="ln" stroke="#6c4df6" stroke-width="3" marker-end="url(#ar5)" d="M760,294 L760,232"/>
+  <text class="lbl" x="774" y="268">JSON response</text>
+
+  <!-- layer 2 -->
+  <rect x="30" y="300" width="1100" height="230" rx="14" fill="#eef6ff" stroke="#1d6fe8" stroke-width="2"/>
+  <text class="tb" x="54" y="336" fill="#1d6fe8">LAYER 2 &#8212; APPLICATION  (Node.js + Express, server/server.js, port 5000)</text>
+  <g>
+    <rect x="60" y="356" width="200" height="90" rx="10" class="card"/>
+    <text class="tb" x="160" y="390" text-anchor="middle">Middleware</text>
+    <text class="tss" x="160" y="416" text-anchor="middle">cors &#183; json parser</text>
+    <text class="tss" x="160" y="436" text-anchor="middle">static files</text>
+  </g>
+  <g>
+    <rect x="285" y="356" width="215" height="90" rx="10" class="card"/>
+    <text class="tb" x="392" y="390" text-anchor="middle">Routes (11 endpoints)</text>
+    <text class="tss" x="392" y="416" text-anchor="middle">/api/health /api/knowledge</text>
+    <text class="tss" x="392" y="436" text-anchor="middle">/api/chat /api/leads ...</text>
+  </g>
+  <g>
+    <rect x="525" y="356" width="200" height="90" rx="10" class="card"/>
+    <text class="tb" x="625" y="390" text-anchor="middle">askOpenAI()</text>
+    <text class="tss" x="625" y="416" text-anchor="middle">builds the grounded</text>
+    <text class="tss" x="625" y="436" text-anchor="middle">prompt, calls the API</text>
+  </g>
+  <g>
+    <rect x="750" y="356" width="200" height="90" rx="10" class="card"/>
+    <text class="tb" x="850" y="390" text-anchor="middle">matchLocally()</text>
+    <text class="tss" x="850" y="416" text-anchor="middle">offline word-scoring</text>
+    <text class="tss" x="850" y="436" text-anchor="middle">fallback engine</text>
+  </g>
+  <g>
+    <rect x="975" y="356" width="125" height="90" rx="10" class="card"/>
+    <text class="tb" x="1037" y="390" text-anchor="middle">saveLead()</text>
+    <text class="tss" x="1037" y="420" text-anchor="middle">lead capture</text>
+  </g>
+  <text class="tss" x="60" y="486">The API key lives only here, in server/.env, read through process.env. It is never sent to the browser.</text>
+  <text class="tss" x="60" y="512">If the OpenAI call throws or returns an error, the same request is answered by matchLocally() instead.</text>
+
+  <!-- arrows to layer 3 and external -->
+  <path class="ln" stroke="#6c4df6" stroke-width="3" marker-end="url(#ar5)" d="M300,532 L300,614"/>
+  <text class="lbl" x="314" y="580">fs.readFileSync / writeFileSync</text>
+  <path class="ln" stroke="#0f9b8e" stroke-width="3" marker-end="url(#ar6)" d="M900,532 L900,614"/>
+  <text class="lbl" x="914" y="580" fill="#0f9b8e">HTTPS POST</text>
+
+  <!-- layer 3 -->
+  <rect x="30" y="620" width="540" height="160" rx="14" fill="#f6f7fb" stroke="#15192e" stroke-width="2"/>
+  <text class="tb" x="54" y="656">LAYER 3 &#8212; DATA  (local JSON files)</text>
+  <text class="ts" x="54" y="692" font-family="Consolas, monospace">server/data/knowledge.json</text>
+  <text class="ts" x="54" y="722" font-family="Consolas, monospace">server/data/leads.json</text>
+  <text class="ts" x="54" y="752" font-family="Consolas, monospace">server/data/messages.json</text>
+
+  <!-- external -->
+  <rect x="600" y="620" width="530" height="160" rx="14" fill="#eafaf7" stroke="#0f9b8e" stroke-width="2"/>
+  <text class="tb" x="624" y="656" fill="#0f9b8e">EXTERNAL SERVICE</text>
+  <text class="ts" x="624" y="692">api.openai.com / v1 / chat / completions</text>
+  <text class="tss" x="624" y="722">model gpt-4o-mini &#183; temperature 0.2 &#183; max_tokens 200</text>
+  <text class="tss" x="624" y="750">answers only from the content the server sends it</text>
+</svg>
+</div>
+
+<!-- ============================= FIG: SEQUENCE ============================= -->
+<div class="fig" id="seq">
+<svg width="1160" height="760" viewBox="0 0 1160 760">
+  <defs>
+    <marker id="ar7" markerWidth="10" markerHeight="10" refX="9" refY="3.2" orient="auto">
+      <path d="M0,0 L9,3.2 L0,6.4 z" fill="#15192e"/>
+    </marker>
+  </defs>
+  <!-- lanes -->
+  <rect x="30"  y="86" width="230" height="650" fill="#f7f5ff"/>
+  <rect x="300" y="86" width="230" height="650" fill="#eef6ff"/>
+  <rect x="570" y="86" width="230" height="650" fill="#f6f7fb"/>
+  <rect x="840" y="86" width="290" height="650" fill="#eafaf7"/>
+
+  <rect x="30"  y="30" width="230" height="56" rx="8" fill="#6c4df6"/>
+  <text class="tw" x="145" y="65" text-anchor="middle">Browser</text>
+  <rect x="300" y="30" width="230" height="56" rx="8" fill="#1d6fe8"/>
+  <text class="tw" x="415" y="65" text-anchor="middle">Express server</text>
+  <rect x="570" y="30" width="230" height="56" rx="8" fill="#15192e"/>
+  <text class="tw" x="685" y="65" text-anchor="middle">knowledge.json</text>
+  <rect x="840" y="30" width="290" height="56" rx="8" fill="#0f9b8e"/>
+  <text class="tw" x="985" y="65" text-anchor="middle">OpenAI API</text>
+
+  <!-- messages -->
+  <path class="ln" marker-end="url(#ar7)" d="M145,130 L408,130"/>
+  <text class="ts" x="276" y="120" text-anchor="middle">1. POST /api/chat  { message }</text>
+
+  <path class="ln" marker-end="url(#ar7)" d="M415,186 L678,186"/>
+  <text class="ts" x="546" y="176" text-anchor="middle">2. readData() &#8212; load all Q&amp;A pairs</text>
+
+  <path class="ln" marker-end="url(#ar7)" d="M685,242 L422,242"/>
+  <text class="ts" x="553" y="232" text-anchor="middle">3. array of knowledge items</text>
+
+  <rect x="320" y="272" width="190" height="60" rx="8" fill="#fff" stroke="#1d6fe8" stroke-width="2"/>
+  <text class="ts" x="415" y="296" text-anchor="middle">4. build the prompt</text>
+  <text class="tss" x="415" y="318" text-anchor="middle">rules + content + question</text>
+
+  <path class="ln" stroke="#0f9b8e" marker-end="url(#ar7)" d="M415,374 L978,374"/>
+  <text class="ts" x="696" y="364" text-anchor="middle">5. HTTPS POST with Authorization: Bearer &lt;key&gt;</text>
+
+  <rect x="860" y="402" width="250" height="60" rx="8" fill="#fff" stroke="#0f9b8e" stroke-width="2"/>
+  <text class="ts" x="985" y="426" text-anchor="middle">6. the model answers</text>
+  <text class="tss" x="985" y="448" text-anchor="middle">only from that content</text>
+
+  <path class="ln" stroke="#0f9b8e" marker-end="url(#ar7)" d="M985,504 L422,504"/>
+  <text class="ts" x="700" y="494" text-anchor="middle">7. answer text, or exactly NO_ANSWER</text>
+
+  <rect x="310" y="534" width="210" height="84" rx="8" fill="#fff" stroke="#e07c0a" stroke-width="2"/>
+  <text class="ts" x="415" y="558" text-anchor="middle">8. NO_ANSWER ?</text>
+  <text class="tss" x="415" y="580" text-anchor="middle">yes &#8594; saveLead(question)</text>
+  <text class="tss" x="415" y="602" text-anchor="middle">no  &#8594; attach the source Q</text>
+
+  <path class="ln" marker-end="url(#ar7)" d="M415,658 L152,658"/>
+  <text class="ts" x="283" y="648" text-anchor="middle">9. { reply, answered, source, mode }</text>
+
+  <rect x="42" y="686" width="206" height="44" rx="8" fill="#fff" stroke="#6c4df6" stroke-width="2"/>
+  <text class="ts" x="145" y="714" text-anchor="middle">10. render the bubble</text>
+</svg>
+</div>
+
+<!-- ============================= FIG: FLOWCHART ============================= -->
+<div class="fig" id="flow">
+<svg width="820" height="1040" viewBox="0 0 820 1040">
+  <defs>
+    <marker id="ar8" markerWidth="10" markerHeight="10" refX="9" refY="3.2" orient="auto">
+      <path d="M0,0 L9,3.2 L0,6.4 z" fill="#15192e"/>
+    </marker>
+  </defs>
+  <!-- start -->
+  <rect x="280" y="20" width="260" height="56" rx="28" fill="#6c4df6"/>
+  <text class="tw" x="410" y="55" text-anchor="middle">START</text>
+  <path class="ln" marker-end="url(#ar8)" d="M410,76 L410,116"/>
+
+  <rect x="230" y="120" width="360" height="62" rx="8" class="card"/>
+  <text class="t" x="410" y="146" text-anchor="middle">Read the visitor's question</text>
+  <text class="tss" x="410" y="168" text-anchor="middle">and the whole knowledge array</text>
+  <path class="ln" marker-end="url(#ar8)" d="M410,182 L410,222"/>
+
+  <rect x="230" y="226" width="360" height="86" rx="8" class="card"/>
+  <text class="t" x="410" y="252" text-anchor="middle">cleanWords(question)</text>
+  <text class="tss" x="410" y="274" text-anchor="middle">lowercase &#183; strip punctuation</text>
+  <text class="tss" x="410" y="296" text-anchor="middle">remove stop words (the, is, you ...)</text>
+  <path class="ln" marker-end="url(#ar8)" d="M410,312 L410,352"/>
+
+  <rect x="190" y="356" width="440" height="86" rx="8" fill="#f7f5ff" stroke="#6c4df6" stroke-width="2"/>
+  <text class="t" x="410" y="382" text-anchor="middle">For every knowledge item: score it</text>
+  <text class="tss" x="410" y="404" text-anchor="middle">exact word match  &#8594; +2 points</text>
+  <text class="tss" x="410" y="426" text-anchor="middle">word starts with the same 4 letters &#8594; +1 point</text>
+  <path class="ln" marker-end="url(#ar8)" d="M410,442 L410,482"/>
+
+  <rect x="250" y="486" width="320" height="62" rx="8" class="card"/>
+  <text class="t" x="410" y="512" text-anchor="middle">Keep the item with the</text>
+  <text class="t" x="410" y="534" text-anchor="middle">highest score</text>
+  <path class="ln" marker-end="url(#ar8)" d="M410,548 L410,588"/>
+
+  <!-- decision -->
+  <path d="M410,588 L600,672 L410,756 L220,672 z" fill="#fff6ea" stroke="#e07c0a" stroke-width="2.5"/>
+  <text class="tb" x="410" y="666" text-anchor="middle">best score</text>
+  <text class="tb" x="410" y="690" text-anchor="middle">&#8805; 2 ?</text>
+
+  <!-- yes branch -->
+  <path class="ln" marker-end="url(#ar8)" d="M600,672 L690,672 L690,820 L560,820"/>
+  <text class="lbl" x="620" y="660">YES</text>
+  <rect x="300" y="788" width="260" height="66" rx="8" fill="#eafaf7" stroke="#0f9b8e" stroke-width="2"/>
+  <text class="t" x="430" y="814" text-anchor="middle">Return that answer</text>
+  <text class="tss" x="430" y="838" text-anchor="middle">with its source question</text>
+
+  <!-- no branch -->
+  <path class="ln" marker-end="url(#ar8)" d="M220,672 L130,672 L130,788"/>
+  <text class="lbl" x="150" y="660">NO</text>
+  <rect x="20" y="792" width="230" height="66" rx="8" fill="#fff6ea" stroke="#e07c0a" stroke-width="2"/>
+  <text class="t" x="135" y="818" text-anchor="middle">Say "I do not know"</text>
+  <text class="tss" x="135" y="842" text-anchor="middle">and saveLead(question)</text>
+
+  <path class="ln" marker-end="url(#ar8)" d="M135,858 L135,930 L380,930"/>
+  <path class="ln" marker-end="url(#ar8)" d="M430,854 L430,930"/>
+
+  <rect x="280" y="960" width="260" height="56" rx="28" fill="#15192e"/>
+  <text class="tw" x="410" y="995" text-anchor="middle">STOP</text>
+</svg>
+</div>
+
+<!-- ============================= FIG: THREE MODES ============================= -->
+<div class="fig" id="modes">
+<svg width="1160" height="520" viewBox="0 0 1160 520">
+  <defs>
+    <marker id="ar9" markerWidth="10" markerHeight="10" refX="9" refY="3.2" orient="auto">
+      <path d="M0,0 L9,3.2 L0,6.4 z" fill="#15192e"/>
+    </marker>
+  </defs>
+  <rect x="30" y="20" width="1100" height="70" rx="12" fill="#f6f7fb" stroke="#15192e" stroke-width="2"/>
+  <text class="tb" x="580" y="54" text-anchor="middle">On page load the browser calls GET /api/health and picks a mode</text>
+  <text class="tss" x="580" y="78" text-anchor="middle">the chosen mode is printed honestly in the badge at the top of the page</text>
+
+  <path class="ln" marker-end="url(#ar9)" d="M220,92 L220,142"/>
+  <path class="ln" marker-end="url(#ar9)" d="M580,92 L580,142"/>
+  <path class="ln" marker-end="url(#ar9)" d="M940,92 L940,142"/>
+
+  <g>
+    <rect x="50" y="148" width="340" height="320" rx="14" fill="#eafaf7" stroke="#0f9b8e" stroke-width="2.5"/>
+    <circle cx="90" cy="192" r="18" fill="#0f9b8e"/>
+    <text class="tw" x="90" y="199" text-anchor="middle">1</text>
+    <text class="tb" x="120" y="199" fill="#0f9b8e">MODE 1 &#8212; FULL AI</text>
+    <text class="ts" x="72" y="240">Server is running and the</text>
+    <text class="ts" x="72" y="266">API key is present.</text>
+    <text class="ts" x="72" y="306">Answers come from</text>
+    <text class="ts" x="72" y="332">OpenAI gpt-4o-mini,</text>
+    <text class="ts" x="72" y="358">grounded in the</text>
+    <text class="ts" x="72" y="384">knowledge base.</text>
+    <rect x="72" y="406" width="296" height="44" rx="10" fill="#0f9b8e"/>
+    <text class="tw" x="220" y="434" text-anchor="middle">badge: AI connected</text>
+  </g>
+  <g>
+    <rect x="410" y="148" width="340" height="320" rx="14" fill="#fff6ea" stroke="#e07c0a" stroke-width="2.5"/>
+    <circle cx="450" cy="192" r="18" fill="#e07c0a"/>
+    <text class="tw" x="450" y="199" text-anchor="middle">2</text>
+    <text class="tb" x="480" y="199" fill="#e07c0a">MODE 2 &#8212; SERVER ONLY</text>
+    <text class="ts" x="432" y="240">Server is running but there</text>
+    <text class="ts" x="432" y="266">is no key, or OpenAI failed.</text>
+    <text class="ts" x="432" y="306">Answers come from the</text>
+    <text class="ts" x="432" y="332">word-scoring engine inside</text>
+    <text class="ts" x="432" y="358">the server. Data is still</text>
+    <text class="ts" x="432" y="384">saved to the JSON files.</text>
+    <rect x="432" y="406" width="296" height="44" rx="10" fill="#e07c0a"/>
+    <text class="tw" x="580" y="434" text-anchor="middle">badge: offline matching</text>
+  </g>
+  <g>
+    <rect x="770" y="148" width="340" height="320" rx="14" fill="#f6f7fb" stroke="#8b90ab" stroke-width="2.5"/>
+    <circle cx="810" cy="192" r="18" fill="#8b90ab"/>
+    <text class="tw" x="810" y="199" text-anchor="middle">3</text>
+    <text class="tb" x="840" y="199" fill="#5b6080">MODE 3 &#8212; BROWSER ONLY</text>
+    <text class="ts" x="792" y="240">The server is not running</text>
+    <text class="ts" x="792" y="266">at all.</text>
+    <text class="ts" x="792" y="306">The same matching runs in</text>
+    <text class="ts" x="792" y="332">JavaScript and the data is</text>
+    <text class="ts" x="792" y="358">kept in localStorage, so the</text>
+    <text class="ts" x="792" y="384">demo still works.</text>
+    <rect x="792" y="406" width="296" height="44" rx="10" fill="#8b90ab"/>
+    <text class="tw" x="940" y="434" text-anchor="middle">badge: browser mode</text>
+  </g>
+</svg>
+</div>
+
+<!-- ============================= FIG: SITEMAP ============================= -->
+<div class="fig" id="sitemap">
+<svg width="1160" height="620" viewBox="0 0 1160 620">
+  <defs>
+    <marker id="ar10" markerWidth="10" markerHeight="10" refX="9" refY="3.2" orient="auto">
+      <path d="M0,0 L9,3.2 L0,6.4 z" fill="#15192e"/>
+    </marker>
+  </defs>
+  <rect x="430" y="20" width="300" height="70" rx="12" fill="#6c4df6"/>
+  <text class="tw" x="580" y="52" text-anchor="middle">WebtiqAI website</text>
+  <text class="tws" x="580" y="76" text-anchor="middle">served from http://localhost:5000</text>
+
+  <path class="ln" d="M580,90 L580,120 M260,120 L900,120 M260,120 L260,156 M900,120 L900,156"/>
+  <path class="ln" marker-end="url(#ar10)" d="M260,150 L260,170"/>
+  <path class="ln" marker-end="url(#ar10)" d="M900,150 L900,170"/>
+
+  <rect x="110" y="176" width="300" height="64" rx="10" fill="#eef6ff" stroke="#1d6fe8" stroke-width="2"/>
+  <text class="tb" x="260" y="216" text-anchor="middle">index.html &#8212; landing page</text>
+
+  <rect x="750" y="176" width="300" height="64" rx="10" fill="#eef6ff" stroke="#1d6fe8" stroke-width="2"/>
+  <text class="tb" x="900" y="216" text-anchor="middle">demo.html &#8212; live demo</text>
+
+  <!-- index children -->
+  <g>
+    <text class="ts" x="130" y="286">1. Navigation bar + mobile menu</text>
+    <text class="ts" x="130" y="316">2. Hero + self-playing chat card</text>
+    <text class="ts" x="130" y="346">3. Four animated stat counters</text>
+    <text class="ts" x="130" y="376">4. Six feature cards</text>
+    <text class="ts" x="130" y="406">5. Three steps + embed snippet</text>
+    <text class="ts" x="130" y="436">6. Four bot cards (the bot team)</text>
+    <text class="ts" x="130" y="466">7. Three pricing plans + toggle</text>
+    <text class="ts" x="130" y="496">8. FAQ accordion (five items)</text>
+    <text class="ts" x="130" y="526">9. Contact form (validated)</text>
+    <text class="ts" x="130" y="556">10. Footer</text>
+    <text class="ts" x="130" y="586">11. Floating chat widget</text>
+    <path class="ln" stroke="#c7cad8" d="M118,262 L118,592"/>
+  </g>
+  <!-- demo children -->
+  <g>
+    <text class="ts" x="770" y="286">1. Status badge (mode indicator)</text>
+    <text class="ts" x="770" y="316">2. Knowledge Base panel</text>
+    <text class="tss" x="790" y="342">add a Q&amp;A pair, delete one,</text>
+    <text class="tss" x="790" y="366">clear all, load sample data</text>
+    <text class="ts" x="770" y="396">3. Chat panel with suggestions</text>
+    <text class="ts" x="770" y="426">4. Answer with source line</text>
+    <text class="ts" x="770" y="456">5. Leads table</text>
+    <text class="tss" x="790" y="482">every question the bot could</text>
+    <text class="tss" x="790" y="506">not answer lands here</text>
+    <path class="ln" stroke="#c7cad8" d="M758,262 L758,512"/>
+  </g>
+</svg>
+</div>
+
+</body>
+</html>
