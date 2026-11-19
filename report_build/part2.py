@@ -455,6 +455,11 @@ para(doc, "In addition, **responsive testing** was performed with the device too
           "by stopping the server while the page was open, in order to confirm that the "
           "application falls back to browser mode and that the badge changes accordingly.")
 
+para(doc, "The tests were run in all three operating modes. Most of the interface behaviour is "
+          "identical in every mode, so each case was executed once in the mode that makes it "
+          "meaningful; the cases that concern the language model itself were executed with a live "
+          "API key present, and are described in detail in Section 7.3.")
+
 h2(doc, "7.1  Test Cases")
 
 para(doc, "Table 7.1 records the test cases, the input supplied, the expected result, the observed "
@@ -512,7 +517,13 @@ table(doc, ["ID", "Test case", "Input", "Expected result", "Actual result", "Ver
        ["TC-25", "Responsive layout", "Widths of 1366, 980, 768 and 414 pixels",
         "Grids reflow; the hamburger menu appears below 680 pixels", "As expected", "Pass"],
        ["TC-26", "Server stopped", "Stop the server, then reload and chat",
-        "Badge turns grey; the bot still answers from browser storage", "As expected", "Pass"]],
+        "Badge turns grey; the bot still answers from browser storage", "As expected", "Pass"],
+       ["TC-27", "Live AI, known question", "“how are you doing today?”, with the matching item stored",
+        "Stored answer returned unchanged, mode “ai”", "As expected", "Pass"],
+       ["TC-28", "Live AI, unknown question", "“do you sell laptops?”",
+        "NO_ANSWER, honest refusal, lead saved, mode “ai”", "As expected", "Pass"],
+       ["TC-29", "Key removed mid-run", "Delete the key from .env and restart",
+        "Badge turns amber; answers continue from the word matcher", "As expected", "Pass"]],
       caption="Table 7.1: Test cases and their results",
       widths=[0.62, 1.05, 1.15, 1.45, 0.95, 0.55], size=9)
 
@@ -545,17 +556,61 @@ para(doc, "The third was not a defect in the code but a conflict in the environm
           "EADDRINUSE. The default port was changed to 5000 in the server, in the environment "
           "files and in js/api.js.")
 
-h2(doc, "7.3  Limitation of the present testing")
+h2(doc, "7.3  Verification of the live AI mode")
 
-para(doc, "One limitation must be stated plainly. At the time this report was prepared, the file "
-          "server/.env did not contain a live OpenAI API key, so the system was operating in mode "
-          "two. All the paths that lead up to the external call were verified, including the "
-          "construction of the prompt, the selection between the two paths, the handling of a "
-          "failed call and the capture of a lead; and the screenshots in Chapter 8 correctly show "
-          "the amber badge rather than the green one. The behaviour of the live language model "
-          "itself, however, has not been measured, and no claim is made about it in this report. "
-          "Once a valid key is placed in server/.env and the server is restarted, the badge turns "
-          "green and the same test cases can be repeated in mode one.")
+para(doc, "The test cases in Table 7.1 exercise the behaviour of the application as a whole. "
+          "Because the most important claim of this project concerns the language model — that it "
+          "answers only from the supplied content and refuses honestly otherwise — that claim was "
+          "verified separately, in mode one, with a live API key present in server/.env. The "
+          "health endpoint confirmed the mode before the tests were run:")
+
+code(doc, [
+    "$ curl http://localhost:5000/api/health",
+    '{"status":"ok","aiEnabled":true,"model":"gpt-4o-mini","knowledgeItems":1}',
+], caption="Listing 7.1: The server reporting that the live AI mode is active")
+
+para(doc, "The knowledge base at that moment held a single item, taught through the interface: the "
+          "question “how are you?” with the answer “yes i am fine”. Two requests were then sent "
+          "directly to the endpoint with curl, which bypasses the browser completely.")
+
+code(doc, [
+    "$ curl -X POST http://localhost:5000/api/chat \\",
+    '       -H \"Content-Type: application/json\" \\',
+    '       -d \'{\"message\":\"how are you doing today?\"}\'',
+    "",
+    '{\"reply\":\"yes i am fine\",\"answered\":true,\"source\":null,\"mode\":\"ai\"}',
+    "",
+    "$ curl -X POST http://localhost:5000/api/chat \\",
+    '       -H \"Content-Type: application/json\" \\',
+    '       -d \'{\"message\":\"do you sell laptops?\"}\'',
+    "",
+    '{\"reply\":\"Sorry, I could not find that in my content, and I will not guess.',
+    '           Our team will get back to you - I have saved your question.\",',
+    ' \"answered\":false,\"source\":null,\"mode\":\"ai\"}',
+], caption="Listing 7.2: Two live requests answered by the language model")
+
+para(doc, "Both responses carry **mode: “ai”**, which proves that they came from the external call "
+          "and not from the fallback engine. The first request is the more interesting of the two. "
+          "The question asked was “how are you doing today?”, which does not match the stored "
+          "question word for word, yet the model returned the stored answer unchanged and added "
+          "nothing of its own — this is precisely the grounding behaviour the system prompt is "
+          "designed to produce. The second request concerned laptops, a subject entirely absent "
+          "from the knowledge base. The model returned NO_ANSWER, the server converted that into "
+          "an honest refusal, and the question was written into leads.json with the status “New "
+          "lead” and a timestamp. The model did not invent a product range, a price or a policy.")
+
+para(doc, "One small observation is worth recording. In the first response the source field is "
+          "null, even though the answer did come from the stored item. This is expected rather "
+          "than a defect: the source line is produced by matchLocally, the word based engine, and "
+          "the words of “how are you doing today” that survive stop word removal do not reach the "
+          "threshold of two points against that particular item. It illustrates the difference "
+          "between the two engines clearly — the language model understood the question, the word "
+          "matcher did not — and it is the reason the language model is used for the answer while "
+          "the matcher is used only to label the source.")
+
+para(doc, "Modes two and three were verified separately by removing the key and by stopping the "
+          "server, as recorded in test cases TC-26 and in Section 7.2. All three operating modes "
+          "of the application have therefore been exercised.")
 
 page_break(doc)
 
@@ -564,9 +619,9 @@ h1(doc, "8.  SCREENSHOTS AND OUTPUT")
 
 para(doc, "All of the screenshots in this chapter were captured from the application while it was "
           "running on the development machine at the address http://localhost:5000. None of them "
-          "is a mock-up or a design drawing. The amber badge visible in several of them is the "
+          "is a mock-up or a design drawing. The green badge visible in several of them is the "
           "honest status indicator described in Chapter 6, reporting that the system was running "
-          "in mode two at the time of capture.")
+          "in mode one, connected to the language model, at the time of capture.")
 
 h2(doc, "8.1  The landing page")
 
@@ -659,10 +714,12 @@ h2(doc, "8.5  The API and the stored data")
 
 figure(doc, "s16_health.png", "Figure 8.16: The response of GET /api/health", width=6.0)
 
-para(doc, "The health endpoint reports that the server is running, that aiEnabled is false because "
-          "no key was configured, that the active model is therefore offline-matching, and how "
-          "many items the knowledge base currently holds. This single response is what the page "
-          "uses to choose its mode.")
+para(doc, "The health endpoint reports that the server is running, that aiEnabled is true because a "
+          "key is configured, that the active model is gpt-4o-mini, and how many items the "
+          "knowledge base currently holds. This single response is what the page uses to choose "
+          "its mode, and it is what turns the badge green. With the key removed the same endpoint "
+          "would report aiEnabled false and the model offline-matching, and the badge would turn "
+          "amber without anything else in the application changing.")
 
 figure(doc, "s17_leads_json.png", "Figure 8.17: The response of GET /api/leads, showing the stored record",
        width=6.0)
