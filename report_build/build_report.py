@@ -479,7 +479,7 @@ table(doc,
        ["Runtime", "Node.js 18+",
         "Executes the server. Its built in fetch function is used to call the OpenAI API, so no "
         "HTTP library is required."],
-       ["Server framework", "Express 5",
+       ["Server framework", "Express 4.x",
         "Routing, middleware pipeline, JSON body parsing and serving of the static front end."],
        ["Middleware", "cors, express.json, express.static",
         "Cross origin requests during development, parsing of JSON request bodies, delivery of the "

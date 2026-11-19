@@ -816,8 +816,8 @@ refs = [
  "Available at: https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage",
  "Node.js Foundation, \u201cNode.js v18 Documentation \u2014 File System and Globals\u201d. "
  "Available at: https://nodejs.org/docs/latest-v18.x/api/",
- "Express.js, \u201cExpress 5 Guide: Routing, Middleware and Error Handling\u201d. "
- "Available at: https://expressjs.com/en/5x/api.html",
+ "Express.js, \u201cExpress 4.x API Guide: Routing, Middleware and Error Handling\u201d. "
+ "Available at: https://expressjs.com/en/4x/api.html",
  "OpenAI, \u201cAPI Reference \u2014 Chat Completions\u201d. "
  "Available at: https://platform.openai.com/docs/api-reference/chat",
  "OpenAI, \u201cPrompt Engineering Guide\u201d. "

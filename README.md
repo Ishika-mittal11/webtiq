@@ -12,7 +12,7 @@
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![Node.js](https://img.shields.io/badge/Node.js_18+-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-![Express](https://img.shields.io/badge/Express_5-000000?style=for-the-badge&logo=express&logoColor=white)
+![Express](https://img.shields.io/badge/Express_4.x-000000?style=for-the-badge&logo=express&logoColor=white)
 ![OpenAI](https://img.shields.io/badge/gpt--4o--mini-412991?style=for-the-badge&logo=openai&logoColor=white)
 
 <img src="https://img.shields.io/badge/frameworks-0-6c4df6?style=flat-square" />
@@ -307,7 +307,7 @@ webtiq-ai/
 </td><td valign="top" width="50%">
 
 **Back end**
-- Node.js + Express, middleware pipeline, order matters
+- Node.js + Express 4, middleware pipeline, order matters
 - REST routing, correct HTTP status codes
 - `express.json()`, `cors()`, `express.static()`
 - Environment variables via `dotenv`

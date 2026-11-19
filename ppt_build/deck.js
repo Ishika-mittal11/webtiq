@@ -311,7 +311,7 @@ pres.addSection({ title: "What we built" });
 
   const cols = [
     { icon: "monitor", c: BLUE, t: "Frontend", items: ["HTML5 semantic markup", "CSS Grid + Flexbox", "Vanilla JavaScript (ES6)", "No framework, no build"] },
-    { icon: "server", c: CYAN, t: "Backend", items: ["Node.js 18+", "Express 5", "REST API, 12 endpoints", "dotenv for secrets"] },
+    { icon: "server", c: CYAN, t: "Backend", items: ["Node.js 18+", "Express 4.x", "REST API, 12 endpoints", "dotenv for secrets"] },
     { icon: "cpu", c: VIOLET, t: "AI", items: ["OpenAI gpt-4o-mini", "Chat Completions API", "Prompt engineering", "temperature 0.2"] },
     { icon: "database", c: PINK, t: "Storage", items: ["JSON file database", "Node fs module", "knowledge / leads / messages", "Created automatically"] },
     { icon: "refresh", c: GREEN, t: "Fallback", items: ["Word-matching engine", "Stop-word filtering", "localStorage mode", "Three operating modes"] },
